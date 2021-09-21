@@ -16,7 +16,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    # 途中
     @user = User.find(params[:id])
     @book = Book.find(params[:id])
   end
