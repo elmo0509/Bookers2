@@ -1,0 +1,20 @@
+<div class="col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+
+  <table class="table">
+
+    <tbody>
+      <tr>
+        <td>
+          <!--途中-->
+          <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %></br>
+          <%= @user.name %>
+          途中
+        </td>
+        <td><%= @book.title %></td>
+        <td><%= @book.body %></td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
