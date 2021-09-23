@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
   def index
-    @user = User.find(params[:id])
     @loginuser = current_user
     @book = Book.new
     @users = User.all
