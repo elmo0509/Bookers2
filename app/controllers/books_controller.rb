@@ -5,7 +5,7 @@ class BooksController < ApplicationController
     @newbook = Book.new
     @user = current_user
     @books = Book.all
-    
+
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
@@ -20,7 +20,7 @@ class BooksController < ApplicationController
     # バリデーション設定のため（未理解）
     @book = Book.new
     @book.user_id = current_user.id
-    
+
     @newbook = Book.new
     @user = current_user
     @books = Book.all
@@ -30,6 +30,7 @@ class BooksController < ApplicationController
     @newbook =Book.new
     @book = Book.find(params[:id])
     @user = @book.user
+    @current_user = current_user
   end
 
   def edit
