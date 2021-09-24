@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  
+  # 他人の編集画面に遷移できない設定
+  before_action :correct_user, only: [:edit, :update]
 
   def create
     # バリデーション設定のため(未理解)
@@ -57,6 +60,13 @@ private
 
 def book_params
   params.require(:book).permit(:title, :body)
+end
+
+# before_actionのcorrect_userをストロングパラメーターに定義
+def correct_user
+  @book = Book.find(params[:id])
+  @user = @book.user
+  redirect_to(books_path) unless @user == current_user
 end
 
 end
