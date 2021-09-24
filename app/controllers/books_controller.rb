@@ -1,14 +1,26 @@
 class BooksController < ApplicationController
 
   def create
+    # バリデーション設定のため(未理解)
+    @newbook = Book.new
+    @user = current_user
+    @books = Book.all
+    
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
-    flash[:notice] = "Book was successfully created."
-    redirect_to book_path(@book.id)
+    if @book.save
+      flash[:notice] = "Book was successfully created."
+      redirect_to book_path(@book.id)
+    else
+      render :index
+    end
   end
 
   def index
+    # バリデーション設定のため（未理解）
+    @book = Book.new
+    @book.user_id = current_user.id
+    
     @newbook = Book.new
     @user = current_user
     @books = Book.all
