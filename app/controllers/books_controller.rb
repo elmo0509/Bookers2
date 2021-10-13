@@ -1,14 +1,11 @@
 class BooksController < ApplicationController
-  
+
   # 他人の編集画面に遷移できない設定
   before_action :correct_user, only: [:edit, :update]
 
   def create
-    # バリデーション設定のため(未理解)
-    @newbook = Book.new
     @user = current_user
-    @books = Book.all
-
+    @books =Book.all
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
@@ -20,11 +17,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    # バリデーション設定のため（未理解）
     @book = Book.new
-    @book.user_id = current_user.id
-
-    @newbook = Book.new
     @user = current_user
     @books = Book.all
   end
